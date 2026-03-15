@@ -348,7 +348,7 @@ const Dashboard = () => {
                         </div>
                         <p className="text-xs font-semibold text-foreground">{t.skill}</p>
                         <p className={`text-sm font-heading font-bold ${t.direction === "up" ? "text-primary" : "text-destructive"}`}>
-                          {t.change > 0 ? "+" : ""}{t.change}%
+                          {(t.change_pct ?? t.change ?? 0) > 0 ? "+" : ""}{t.change_pct ?? t.change ?? 0}%
                           <span className="text-[10px] text-muted-foreground font-body font-normal ml-1">vs last year</span>
                         </p>
                       </div>

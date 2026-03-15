@@ -29,9 +29,10 @@ export interface CompanyData {
 
 export interface TrendData {
   skill: string;
-  change: number;
+  change?: number;
+  change_pct?: number;
   direction: "up" | "down";
-  icon: string;
+  icon?: string;
 }
 
 export interface AnalyzeResponse {
