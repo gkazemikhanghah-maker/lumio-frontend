@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Syne:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 20% 4%;
+    --foreground: 0 0% 100%;
+
+    --card: 240 18% 7%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 240 18% 7%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 160 100% 45%;
+    --primary-foreground: 240 20% 4%;
+
+    --secondary: 253 100% 69%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 240 15% 15%;
+    --muted-foreground: 240 10% 58%;
+
+    --accent: 160 100% 45%;
+    --accent-foreground: 240 20% 4%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 240 15% 18%;
+    --input: 240 15% 18%;
+    --ring: 160 100% 45%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 240 18% 5%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 160 100% 45%;
+    --sidebar-primary-foreground: 240 20% 4%;
+    --sidebar-accent: 240 15% 12%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 240 15% 18%;
+    --sidebar-ring: 160 100% 45%;
+
+    /* Custom tokens */
+    --gradient-primary: linear-gradient(135deg, hsl(160, 100%, 45%), hsl(160, 100%, 35%));
+    --gradient-accent: linear-gradient(135deg, hsl(160, 100%, 45%), hsl(253, 100%, 69%));
+    --shadow-glow: 0 0 30px hsl(160 100% 45% / 0.15);
+    --shadow-card: 0 4px 24px hsl(0 0% 0% / 0.3);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: hsl(240, 18%, 7%);
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(240, 15%, 25%);
+  border-radius: 3px;
+}
+
+/* Animated gradient mesh background */
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.gradient-mesh {
+  background: radial-gradient(ellipse at 20% 50%, hsl(160 100% 45% / 0.08) 0%, transparent 50%),
+              radial-gradient(ellipse at 80% 50%, hsl(253 100% 69% / 0.06) 0%, transparent 50%),
+              hsl(240, 20%, 4%);
+}
+
+/* Skill bar animation */
+@keyframes bar-fill {
+  from { width: 0%; }
+}
+
+.animate-bar-fill {
+  animation: bar-fill 1s ease-out forwards;
+}
+
+/* Typing effect */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.typing-cursor::after {
+  content: '|';
+  animation: blink 1s infinite;
+  color: hsl(160, 100%, 45%);
+}
+
+/* Print styles — only show resume preview panel */
+@media print {
+  body {
+    background: white !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .print-hide {
+    display: none !important;
+  }
+
+  /* Reset layout constraints for print */
+  .h-screen {
+    height: auto !important;
+  }
+
+  .overflow-hidden {
+    overflow: visible !important;
+  }
+
+  /* Make the right preview panel full width */
+  .hidden.md\:flex.flex-col.flex-1 {
+    display: block !important;
+    width: 100% !important;
+    background: white !important;
+    overflow: visible !important;
+  }
+
+  /* Clean up the resume document for print */
+  .bg-white.rounded-lg {
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    max-width: 100% !important;
+    padding: 40px !important;
+    min-height: auto !important;
+  }
+
+  .bg-\[\#f0f0f0\] {
+    background: white !important;
+    padding: 0 !important;
+  }
+}
