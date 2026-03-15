@@ -9,7 +9,8 @@ export interface AnalyzeRequest {
 }
 
 export interface SkillData {
-  skill: string;
+  name?: string;
+  skill?: string;
   percentage: number;
   trend: "up" | "down" | "stable";
 }

@@ -120,7 +120,7 @@ const Dashboard = () => {
         <div className="container flex items-center gap-4 h-16">
           <Logo />
           <div className="flex-1 max-w-xl">
-            <p className="text-xs font-heading mb-1" style={{ color: "#8b8b9e" }}>Market Intelligence</p>
+            <p className="text-xs font-heading mb-1" style={{ color: "#8b8b9e" }}></p>
             <SearchBar defaultValue={query} onSearch={handleSearch} />
           </div>
         </div>
@@ -245,8 +245,8 @@ const Dashboard = () => {
                   </div>
                   <div className="space-y-4">
                     {skillsData.map((s, i) => (
-                      <div key={s.skill} className="flex items-center gap-3">
-                        <span className="text-xs text-muted-foreground w-40 shrink-0">{s.skill}</span>
+                      <div key={s.name || s.skill} className="flex items-center gap-3">
+                        <span className="text-xs text-muted-foreground w-40 shrink-0">{s.name || s.skill}</span>
                         <div className="flex-1 bg-muted rounded-full h-2.5 overflow-hidden">
                           <motion.div
                             initial={{ width: 0 }}
